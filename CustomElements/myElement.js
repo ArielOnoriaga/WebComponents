@@ -1,18 +1,20 @@
 import Component from "./Component.js";
 
 class myElement extends Component {
+    static get observedAttributes() {
+        return ['button', 'title'];
+    }
+
+    attributeChangedCallback(attr, oldValue, newValue) {
+       if(oldValue !== newValue)
+            this[attr] = newValue;
+    }
+
     getTemplate() {
         const template = document.createElement('template');
         template.innerHTML = `
-            <section>
-                <h2>
-                    Hola Template Sintax
-                </h2>
-
-                <button>
-                    Template Button
-                </button>
-            </section>
+            <button> ${this.button} </button>
+            <h2> ${this.title} </h2>
             ${this.getStyles()}
         `;
 
@@ -31,7 +33,6 @@ class myElement extends Component {
             </style>
         `
     }
-
 
     connectedCallback() {
         this.render(this.getTemplate());
