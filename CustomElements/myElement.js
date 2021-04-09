@@ -1,8 +1,6 @@
-class myElement extends HTMLElement {
-    constructor() {
-        super();
-    }
+import Component from "./Component.js";
 
+class myElement extends Component {
     getTemplate() {
         const template = document.createElement('template');
         template.innerHTML = `
@@ -23,23 +21,20 @@ class myElement extends HTMLElement {
 
     getStyles() {
         return `
-        <style>
-            button {
-                padding: 10px;
-                background: black;
-                color: white;
-                border-radius: 10px;
-            }
-        </style>
+            <style>
+                button {
+                    padding: 10px;
+                    background: black;
+                    color: white;
+                    border-radius: 10px;
+                }
+            </style>
         `
     }
 
-    render() {
-        this.appendChild(this.getTemplate().content.cloneNode(true));
-    }
 
     connectedCallback() {
-        this.render();
+        this.render(this.getTemplate());
     }
 }
 
