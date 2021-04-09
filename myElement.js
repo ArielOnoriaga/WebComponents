@@ -13,25 +13,11 @@ class myElement extends Component {
     getTemplate() {
         const template = document.createElement('template');
         template.innerHTML = `
-            <button> ${this.button} </button>
-            <h2> ${this.title} </h2>
-            ${this.getStyles()}
+            <button class="bg-gray-900 rounded-md text-white"> ${this.button} </button>
+            <h2 class="text-xl"> ${this.title} </h2>
         `;
 
         return template;
-    }
-
-    getStyles() {
-        return `
-            <style>
-                button {
-                    padding: 10px;
-                    background: black;
-                    color: white;
-                    border-radius: 10px;
-                }
-            </style>
-        `
     }
 
     connectedCallback() {
